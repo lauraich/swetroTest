@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!ongr+c3#w(5*^h8o$sj#pz^cbwkcqko855q6h+ax%v%lop)5p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # settings.py
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 1024  # 1 GB 
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'outliersApp'
+    'outliersApp',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'swetroApi.urls'
@@ -127,3 +129,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:4200'
+]

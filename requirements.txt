@@ -2,3 +2,4 @@ django
 djangorestframework
 pandas
 scikit-learn
+django-cors-headers

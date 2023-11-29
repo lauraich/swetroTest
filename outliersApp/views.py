@@ -22,8 +22,11 @@ def processData(request):
             objDataAnalysis.setStructuredData()       
             #outliers = objDataAnalysis.checkOutliers()     
             #outliers = objDataAnalysis.checkOutliersIQR()    
-            #outliers = objDataAnalysis.getOutliersIsolationForest()  
-            outliers = objDataAnalysis.checkOutliers()
+            #outliers = objDataAnalysis.getOutliersIsolationForest()
+            try:
+                outliers = objDataAnalysis.checkOutliers() 
+            except:
+                return JsonResponse({"error":"A processing error has occurred. Please check if the uploaded file is valid."},status=400)
             return JsonResponse({"results":outliers},status=200)
     return JsonResponse({'error': 'Invalid request method.'}, status=400)
 
@@ -37,8 +40,11 @@ def checkPatterns(request):
             objDataAnalysis = DataAnalysis(files=files)
             objDataAnalysis.setStructuredData()       
             #outliers = objDataAnalysis.checkOutliers()     
-            #outliers = objDataAnalysis.checkOutliersIQR()    
-            outliers = objDataAnalysis.checkOutliersPatterns()  
+            #outliers = objDataAnalysis.checkOutliersIQR()
+            try:    
+                outliers = objDataAnalysis.checkOutliersPatterns()  
+            except:
+                return JsonResponse({"error":"A processing error has occurred. Please check if the uploaded file is valid."},status=400)
             #outliers = objDataAnalysis.checkOutliers()
             return JsonResponse({"results":outliers},status=200)
     return JsonResponse({'error': 'Invalid request method.'}, status=400)
