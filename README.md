@@ -29,6 +29,8 @@ As for the logic of the service that obtains the records with unusual patterns u
 
 ## Installation
 
+Note: all commands must be executed in the root project.
+
 It is recommended to create a virtual environment to install the libraries.
 
 ```bash
