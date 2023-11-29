@@ -33,20 +33,23 @@ It is recommended to create a virtual environment to install the libraries.
 
 ```bash
 python -m venv .venv
-.venv/Scripts/activate
 ```
-To install the libraries, run the following command in your terminal:
 
 ```bash
-python -m venv .venv
 .venv/Scripts/activate
 ```
+
 To install the libraries, run the following command in your terminal:
 
 ```bash
 pip install -r requirements.txt
 ```
-To run the application execute the following command:
+
+To run the application execute the following commands:
+
+```bash
+python manage.py migrate
+```
 
 ```bash
 python manage.py runserver
