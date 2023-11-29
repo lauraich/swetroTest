@@ -4,16 +4,18 @@
 The api was developed using Python as programming language together with the Django rest framework.
 
 It consists of 2 services:
+
 process_data: In charge of processing the file or files and getting records of possible "cheaters".
+
 check_patterns: It is in charge of processing the file or files and obtaining records with unusual patterns using the Isolation Forest algorithm.
 
 ### Logic of process_data
 
 The logic for obtaining records of potential cheaters was approached in three ways:
 
-Step 1: Records that have values above what an average person would have are filtered out. For this, the metrics of speed, pace and distance are taken because they are the metrics that I consider most relevant in terms of suspicious behavior.  Therefore, records containing a speed greater than 7 meters/second or a pace less than 2.381 minutes/kilometer or a distance greater than 42,000 meters are filtered out.
+Step 1: Records that have values above what an average person would have are filtered out. For this, the metrics of speed, pace and distance are taken because they are the metrics that I consider most relevant in terms of suspicious behavior.  Therefore, records containing a speed greater than 7 meters/second or a pace less than 2.381 minutes/kilometer or a distance greater than 42,000 meters are obtained.
 
-Step 2: With the records filtered in step 1, each record is taken and all the records associated with the user of that record are obtained. This is done in order to check if the record is within the normal range for that user. To see if the record data are outliers, the lower and upper limits of each user metric are calculated using the concept of the interquartile range. Subsequently, the values of each metric in the record are compared and if they are outside the lower limit or the upper limit then the value of that metric is considered to be an outlier for the user. Finally, with all records that have at least one outlier metric, a last step is applied.
+Step 2: With the records obtained in step 1, each record is taken and all the records associated with the user of that record are obtained. This is done in order to check if the record is within the normal range for that user. To see if the record data are outliers, the lower and upper limits of each user metric are calculated using the concept of the interquartile range. Subsequently, the values of each metric in the record are compared and if they are outside the lower limit or the upper limit then the value of that metric is considered to be an outlier for the user. Finally, with all records that have at least one outlier metric, a last step is applied.
 
 Step 3: The third and last step consists of validating if the records obtained from step 2 can really be considered as "cheaters" by applying predefined conditions that I considered typical of a "cheater", these consist of the following:
 
