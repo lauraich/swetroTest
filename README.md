@@ -4,8 +4,8 @@
 The api was developed using Python as programming language together with the Django rest framework.
 
 It consists of 2 services:
-process_data: In charge of processing the file and getting records of possible "cheaters".
-check_patterns: It is in charge of processing the file and obtaining records with unusual patterns using the Isolation Forest algorithm.
+process_data: In charge of processing the file or files and getting records of possible "cheaters".
+check_patterns: It is in charge of processing the file or files and obtaining records with unusual patterns using the Isolation Forest algorithm.
 
 ### Logic of process_data
 
